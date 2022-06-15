@@ -1,10 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[215]:
-
-
-get_ipython().run_line_magic('matplotlib', 'inline')
+%matplotlib inline
 from scipy.stats import linregress
 import matplotlib.pyplot as plt
 import numpy as np
@@ -142,128 +136,142 @@ n_11 = np.array(y11, dtype=np.float64)
 
 
 
-
-
-n_1_new = np.array([])
+n_1_new = np.array([]) 
 m_1_new = np.array([])
 for i in range(len(n_1)-1):
-    j = i+1
-    if n_1[i+1]-n_1[i]>5: 
-        n_1_new = n_1[j:]
-        m_1_new = m_1[j:]
-    if not n_1[i+1]-n_1[i]>5: 
-        n_1_new = np.append(n_1_new, n_1[i])
-        m_1_new = np.append(m_1_new, m_1[i])
+    n_1_new = np.append(n_1_new, n_1[i])
+    m_1_new = np.append(m_1_new, m_1[i])
+    for i in range(len(n_1_new)-1):
+        j = i+1
+        if n_1_new[i+1]-n_1_new[i]>5: 
+            n_1_new = n_1_new[j:]
+            m_1_new = m_1_new[j:]
+
+
         
 n_2_new = np.array([]) 
 m_2_new = np.array([])
 for i in range(len(n_2)-1):
-    j = i+1
-    if n_2[i+1]-n_2[i]>5: 
-        n_2_new = n_2[j:]
-        m_2_new = m_2[j:]
-    if not n_2[i+1]-n_2[i]>5: 
-        n_2_new = np.append(n_2_new, n_2[i])
-        m_2_new = np.append(m_2_new, m_2[i])
+    n_2_new = np.append(n_2_new, n_2[i])
+    m_2_new = np.append(m_2_new, m_2[i])
+    for i in range(len(n_2_new)-1):
+        j = i+1
+        if n_2_new[i+1]-n_2_new[i]>5: 
+            n_2_new = n_2_new[j:]
+            m_2_new = m_2_new[j:]
+
+
         
-n_3_new = np.array([])  
+n_3_new = np.array([]) 
 m_3_new = np.array([])
 for i in range(len(n_3)-1):
-    j = i+1
-    if n_3[i+1]-n_3[i]>5: 
-        n_3_new = n_3[j:]
-        m_3_new = n_3[j:]
-    if not n_3[i+1]-n_3[i]>5: 
-        n_3_new = np.append(n_3_new, n_3[i])
-        m_3_new = np.append(m_3_new, m_3[i])
+    n_3_new = np.append(n_3_new, n_3[i])
+    m_3_new = np.append(m_3_new, m_3[i])
+    for i in range(len(n_3_new)-1):
+        j = i+1
+        if n_3_new[i+1]-n_3_new[i]>5: 
+            n_3_new = n_3_new[j:]
+            m_3_new = m_3_new[j:] 
         
 n_4_new = np.array([]) 
-m_4_new = np.array([]) 
+m_4_new = np.array([])
 for i in range(len(n_4)-1):
-    j = i+1
-    if n_4[i+1]-n_4[i]>5: 
-        n_4_new = n_4[j:]
-        m_4_new = n_4[j:]
-    if not n_4[i+1]-n_4[i]>5: 
-        n_4_new = np.append(n_4_new, n_4[i])
-        m_4_new = np.append(m_4_new, m_4[i])
+    n_4_new = np.append(n_4_new, n_4[i])
+    m_4_new = np.append(m_4_new, m_4[i])
+    for i in range(len(n_4_new)-1):
+        j = i+1
+        if n_4_new[i+1]-n_4_new[i]>5: 
+            n_4_new = n_4_new[j:]
+            m_4_new = m_4_new[j:]
+ 
+        
         
 n_5_new = np.array([]) 
 m_5_new = np.array([])
 for i in range(len(n_5)-1):
-    j = i+1
-    if n_5[i+1]-n_5[i]>5: 
-        n_5_new = n_5[j:]
-        m_5_new = n_5[j:]
-    if not n_5[i+1]-n_5[i]>5: 
-        n_5_new = np.append(n_5_new, n_5[i])
-        m_5_new = np.append(m_5_new, m_5[i])
+    n_5_new = np.append(n_5_new, n_5[i])
+    m_5_new = np.append(m_5_new, m_5[i])
+    for i in range(len(n_5_new)-1):
+        j = i+1
+        if n_5_new[i+1]-n_5_new[i]>5: 
+            n_5_new = n_5_new[j:]
+            m_5_new = m_5_new[j:]
 
+ 
 n_6_new = np.array([]) 
 m_6_new = np.array([])
 for i in range(len(n_6)-1):
-    j = i+1
-    if n_6[i+1]-n_6[i]>5: 
-        n_6_new = n_6[j:]
-        m_6_new = n_6[j:]
-    if not n_6[i+1]-n_6[i]>5: 
-        n_6_new = np.append(n_6_new, n_6[i])
-        m_6_new = np.append(m_6_new, m_6[i])
+    n_6_new = np.append(n_6_new, n_6[i])
+    m_6_new = np.append(m_6_new, m_6[i])
+    for i in range(len(n_6_new)-1):
+        j = i+1
+        if n_6_new[i+1]-n_6_new[i]>5: 
+            n_6_new = n_6_new[j:]
+            m_6_new = m_6_new[j:]
+
 
 n_7_new = np.array([]) 
 m_7_new = np.array([])
 for i in range(len(n_7)-1):
-    j = i+1
-    if n_7[i+1]-n_7[i]>5: 
-        n_7_new = n_7[j:]
-        m_7_new = n_7[j:]
-    if not n_7[i+1]-n_7[i]>5: 
-        n_7_new = np.append(n_7_new, n_7[i])
-        m_7_new = np.append(m_7_new, m_7[i])
+    n_7_new = np.append(n_7_new, n_7[i])
+    m_7_new = np.append(m_7_new, m_7[i])
+    for i in range(len(n_7_new)-1):
+        j = i+1
+        if n_7_new[i+1]-n_7_new[i]>5: 
+            n_7_new = n_7_new[j:]
+            m_7_new = m_7_new[j:]
+
+
+        
         
 n_8_new = np.array([]) 
 m_8_new = np.array([])
 for i in range(len(n_8)-1):
-    j = i+1
-    if n_8[i+1]-n_8[i]>5: 
-        n_8_new = n_8[j:]
-        m_8_new = n_8[j:]
-    if not n_8[i+1]-n_8[i]>5: 
-        n_8_new = np.append(n_8_new, n_8[i])
-        m_8_new = np.append(m_8_new, m_8[i])
+    n_8_new = np.append(n_8_new, n_8[i])
+    m_8_new = np.append(m_8_new, m_8[i])
+    for i in range(len(n_8_new)-1):
+        j = i+1
+        if n_8_new[i+1]-n_8_new[i]>5: 
+            n_8_new = n_8_new[j:]
+            m_8_new = m_8_new[j:]
         
 n_9_new = np.array([]) 
 m_9_new = np.array([])
 for i in range(len(n_9)-1):
-    j = i+1
-    if n_9[i+1]-n_9[i]>5: 
-        n_9_new = n_9[j:]
-        m_9_new = n_9[j:]
-    if not n_9[i+1]-n_9[i]>5: 
-        n_9_new = np.append(n_9_new, n_9[i])
-        m_9_new = np.append(m_9_new, m_9[i])
+    n_9_new = np.append(n_9_new, n_9[i])
+    m_9_new = np.append(m_9_new, m_9[i])
+    for i in range(len(n_9_new)-1):
+        j = i+1
+        if n_9_new[i+1]-n_9_new[i]>5: 
+            n_9_new = n_9_new[j:]
+            m_9_new = m_9_new[j:]
+
         
 n_10_new = np.array([]) 
 m_10_new = np.array([])
 for i in range(len(n_10)-1):
-    j = i+1
-    if n_10[i+1]-n_10[i]>5: 
-        n_10_new = n_10[j:]
-        m_10_new = n_10[j:]
-    if not n_10[i+1]-n_10[i]>5: 
-        n_10_new = np.append(n_10_new, n_10[i])
-        m_10_new = np.append(m_10_new, m_10[i])
+    n_10_new = np.append(n_10_new, n_10[i])
+    m_10_new = np.append(m_10_new, m_10[i])
+    for i in range(len(n_10_new)-1):
+        j = i+1
+        if n_10_new[i+1]-n_10_new[i]>5: 
+            n_10_new = n_10_new[j:]
+            m_10_new = m_10_new[j:]
+
 
 n_11_new = np.array([]) 
 m_11_new = np.array([])
 for i in range(len(n_11)-1):
-    j = i+1
-    if n_11[i+1]-n_11[i]>5: 
-        n_11_new = n_11[j:]
-        m_11_new = n_11[j:]
-    if not n_11[i+1]-n_11[i]>5: 
-        n_11_new = np.append(n_11_new, n_11[i])
-        m_11_new = np.append(m_11_new, m_11[i])
+    n_11_new = np.append(n_11_new, n_11[i])
+    m_11_new = np.append(m_11_new, m_11[i])
+    for i in range(len(n_11_new)-1):
+        j = i+1
+        if n_11_new[i+1]-n_11_new[i]>5: 
+            n_11_new = n_11_new[j:]
+            m_11_new = m_11_new[j:]
+ 
+        
+        
 #d_Ib = np.array([])
 #d_Is = np.array([])
 #dPdI = np.array([])
@@ -456,18 +464,7 @@ slope5F_2 = (n_11[n6F_2]-n_11[n5F_2])/(m_11[m6F_2]-m_11[m5F_2])
 slope_initial = np.array([])
 list = np.array([slope1E_2, slope2E_2, slope3E_2, slope4E_2, slope5E_2])
 slope_finalF_2 = np.append(slope_initial, list)
-#MAX = 0
-#for i in range(len(slope_final)):
-#    if slope_final[i] > MAX:
-#        MAX = slope_final[i]
-#index = np.argwhere(MAX==3)
-#slope_final = np.delete(slope_final, MAX)
-#print (slope_final)
-#MIN = MAX
-#for i in range(len(slope_final)):
-#    if slope_final[i] < MIN:
-#        MIN = slope_final[i]
-#slope_final = np.delete(slope_final, MIN)
+
 
 sumA = 0
 for i in range(len(slope_finalA)):
@@ -608,84 +605,245 @@ for i in range(len(n_11_new)):
     n_11_new[i] = intercpF_2 - n_11_new[i]
 #calculating the adjusted Is(uA) and plotting it
 
-plt.plot(m_1_new, n_1_new, 'o', color='black', label = 'Side1pA')
-plt.plot(m_2_new, n_2_new, 'o', color='pink', label = 'Side1B')
-plt.plot(m_3_new, n_3_new, 'o', color='red', label = 'Side1C')
-plt.plot(m_4_new, n_4_new, 'o', color='blue', label = 'Side1pD')
-plt.plot(m_5_new, n_5_new, 'o', color='yellow', label = 'Side1pE')
-plt.plot(m_6_new, n_6_new, 'o', color='orange', label = 'Side2pA')
-plt.plot(m_7_new, n_7_new, 'o', color='purple', label = 'Side2pB')
-plt.plot(m_8_new, n_8_new, 'o', color='green', label = 'Side2pC')
-plt.plot(m_9_new, n_9_new, 'o', color='magenta', label = 'Side2pD')
-plt.plot(m_10_new, n_10_new, 'o', color='teal', label = 'Side2pE')
-plt.plot(m_11_new, n_11_new, 'o', color='chocolate', label = 'Side2pF')
-plt.legend(["Side1pA","Side1pB", "Side1pC", "Side1pD", "Side1pE", "Side2pA", "Side2pB", "Side2pC", "Side2pD", "Side2pE", "Side2pF"], loc=0 )
-plt.title("Ib-Is after correction")
-plt.xlabel('Ib(uA)',fontsize=14)
-plt.ylabel('Is_corrected(uA)',fontsize=14)
+#plt.plot(m_1_new, n_1_new, 'o', color='black', label = 'Side1pA')
+#plt.plot(m_2_new, n_2_new, 'o', color='pink', label = 'Side1pB')
+#plt.plot(m_3_new, n_3_new, 'o', color='red', label = 'Side1pC')
+#plt.plot(m_4_new, n_4_new, 'o', color='blue', label = 'Side1pD')
+#plt.plot(m_5_new, n_5_new, 'o', color='yellow', label = 'Side1pE')
+#plt.plot(m_6_new, n_6_new, 'o', color='orange', label = 'Side2pA')
+#plt.plot(m_7_new, n_7_new, 'o', color='purple', label = 'Side2pB')
+#plt.plot(m_8_new, n_8_new, 'o', color='green', label = 'Side2pC')
+#plt.plot(m_9_new, n_9_new, 'o', color='magenta', label = 'Side2pD')
+#plt.plot(m_10_new, n_10_new, 'o', color='teal', label = 'Side2pE')
+#plt.plot(m_11_new, n_11_new, 'o', color='chocolate', label = 'Side2pF')
+#plt.legend(["Side1pA","Side1pB", "Side1pC", "Side1pD", "Side1pE", "Side2pA", "Side2pB", "Side2pC", "Side2pD", "Side2pE", "Side2pF"], loc=0 )
+#plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
+#plt.plot(figsize=(8, 12))
+#plt.title("Ib-Is after correction")
+#plt.xlabel('Ib(uA)',fontsize=14)
+#plt.ylabel('Is_corrected(uA)',fontsize=14)
 #Plot Is(adjusted) - Ib
 
 
-A = ((n_1[2]-n_1[0])/(m_1[2]-m_1[0])-(n_1[1]-n_1[0])/(m_1[1]-m_1[0]))/((n_1[2]+n_1[0])-(m_1[1]+m_1[0]))
-B = ((m_1[1]-m_1[0])-A*(n_1[1]*n_1[1]-n_1[0]*n_1[0]))/(m_1[1]-m_1[0])
-Is_est = -B/(2*A)
-Ib_est = A*(Is_est*Is_est-n_1[0]*n_1[0])+B*(Is_est-n_1[0])+m_1[0]
-
-m_max = m_1[0]-2
-n_max = n_1[0]*1.08823416
-#1.08823416 is a value that I calculated manually and it works just for channel 1pA, trying to find a method to determine that proportionality value regardles of the channel
+m_1A_max = m_1_new[0]-2
+n_1A_max = (n_1_new[0]/n_1_new[1])*1.020*n_1_new[0]
 R_sh = 8 
-R_p_max = (m_1[0]/(2*n_1[0])-1)*R_sh
+Rp_1A_max = (m_1_new[0]/(2*n_1_new[0])-1)*R_sh
 
+m_1B_max = m_2_new[0]-2
+n_1B_max = (n_2_new[0]/n_2_new[1])*1.020*n_2_new[0]
+R_sh = 8 
+Rp_1B_max = (m_2_new[0]/(2*n_2_new[0])-1)*R_sh
 
-R_p_min_estimated = (m_max/(2*n_max)-1)*R_sh
-R_p_estimated = (R_p_min_estimated + R_p_max)/2
-#R_p calculated for the extrapollated point using the estimated I_s and I_b values 
+m_1C_max = m_3_new[0]-2
+n_1C_max = (n_3_new[0]/n_3_new[1])*1.020*n_3_new[0]
+R_sh = 8 
+Rp_1C_max = (m_3_new[0]/(2*n_3_new[0])-1)*R_sh
 
+m_1D_max = m_4_new[0]-2
+n_1D_max = (n_4_new[0]/n_4_new[1])*1.020*n_4_new[0]
+R_sh = 8 
+Rp_1D_max = (m_4_new[0]/(2*n_4_new[0])-1)*R_sh
 
-R_p_min_vertex = (Ib_est/(2*Is_est)-1)*R_sh
-R_p_vertex = (R_p_min_vertex + R_p_max)/2
-#R_p calculated for the estimated point using the quadratic equatic method
+m_1E_max = m_5_new[0]-2
+n_1E_max = (n_5_new[0]/n_5_new[1])*1.020*n_5_new[0]
+R_sh = 8 
+Rp_1E_max = (m_5_new[0]/(2*n_5_new[0])-1)*R_sh
 
+m_2A_max = m_6_new[0]-2
+n_2A_max = (n_6_new[0]/n_6_new[1])*1.020*n_6_new[0]
+R_sh = 8 
+Rp_2A_max = (m_6_new[0]/(2*n_6_new[0])-1)*R_sh
 
+m_2B_max = m_7_new[0]-2
+n_2B_max = (n_7_new[0]/n_7_new[1])*1.020*n_7_new[0]
+R_sh = 8 
+Rp_2B_max = (m_7_new[0]/(2*n_7_new[0])-1)*R_sh
 
-#Calculated the Ib and Is coordinates of an estimated point outside of the plot and considered that the minimu R_p value and calculated R_p for the last point in the data set and the average of these two value can be considered the real R_p value. 
+m_2C_max = m_8_new[0]-2
+n_2C_max = (n_8_new[0]/n_8_new[1])*1.020*n_8_new[0]
+R_sh = 8 
+Rp_2C_max = (m_8_new[0]/(2*n_8_new[0])-1)*R_sh
 
+m_2D_max = m_9_new[0]-2
+n_2D_max = (n_9_new[0]/n_9_new[1])*1.020*n_9_new[0]
+R_sh = 8 
+Rp_2D_max = (m_9_new[0]/(2*n_9_new[0])-1)*R_sh
 
-R_tes_estimated = np.array([])
-for i in range(len(n)):
-    x = ((m_1[i]-n_1[i])/n_1[i])*(R_sh)-R_p_estimated  
-    R_tes_estimated = np.append(R_tes_estimated, x)
+m_2E_max = m_10_new[0]-2
+n_2E_max = (n_10_new[0]/n_10_new[1])*1.020*n_10_new[0]
+R_sh = 8 
+Rp_2E_max = (m_10_new[0]/(2*n_10_new[0])-1)*R_sh
+
+m_2F_max = m_11_new[0]-2
+n_2F_max = (n_11_new[0]/n_11_new[1])*1.020*n_11_new[0]
+R_sh = 8 
+Rp_2F_max = (m_11_new[0]/(2*n_11_new[0])-1)*R_sh
+
+Rp_1A_min_estimated = (m_1A_max/(2*n_1A_max)-1)*R_sh
+Rp_1A_estimated = (Rp_1A_min_estimated + Rp_1A_max)/2
+
+Rp_1B_min_estimated = (m_1B_max/(2*n_1B_max)-1)*R_sh
+Rp_1B_estimated = (Rp_1B_min_estimated + Rp_1B_max)/2
+
+Rp_1C_min_estimated = (m_1C_max/(2*n_1C_max)-1)*R_sh
+Rp_1C_estimated = (Rp_1C_min_estimated + Rp_1C_max)/2
+
+Rp_1D_min_estimated = (m_1D_max/(2*n_1D_max)-1)*R_sh
+Rp_1D_estimated = (Rp_1D_min_estimated + Rp_1D_max)/2
+
+Rp_1E_min_estimated = (m_1E_max/(2*n_1E_max)-1)*R_sh
+Rp_1E_estimated = (Rp_1E_min_estimated + Rp_1E_max)/2
+
+Rp_2A_min_estimated = (m_2A_max/(2*n_2A_max)-1)*R_sh
+Rp_2A_estimated = (Rp_2A_min_estimated + Rp_2A_max)/2
+
+Rp_2B_min_estimated = (m_2B_max/(2*n_2B_max)-1)*R_sh
+Rp_2B_estimated = (Rp_2B_min_estimated + Rp_2B_max)/2
+
+Rp_2C_min_estimated = (m_2C_max/(2*n_2C_max)-1)*R_sh
+Rp_2C_estimated = (Rp_2C_min_estimated + Rp_2C_max)/2
+
+Rp_2D_min_estimated = (m_2D_max/(2*n_2D_max)-1)*R_sh
+Rp_2D_estimated = (Rp_2D_min_estimated + Rp_2D_max)/2
+
+Rp_2E_min_estimated = (m_2E_max/(2*n_2E_max)-1)*R_sh
+Rp_2E_estimated = (Rp_2E_min_estimated + Rp_2E_max)/2
+
+Rp_2F_min_estimated = (m_2F_max/(2*n_2F_max)-1)*R_sh
+Rp_2F_estimated = (Rp_2F_min_estimated + Rp_2F_max)/2
+
+Rtes_1A_estimated = np.array([])
+for i in range(len(n_1_new)):
+    x = ((m_1_new[i]-n_1_new[i])/n_1_new[i])*(R_sh)-Rp_1A_estimated  
+    Rtes_1A_estimated = np.append(Rtes_1A_estimated, x)
+
+Rtes_1B_estimated = np.array([])
+for i in range(len(n_2_new)):
+    x = ((m_2_new[i]-n_2_new[i])/n_2_new[i])*(R_sh)-Rp_1B_estimated  
+    Rtes_1B_estimated = np.append(Rtes_1B_estimated, x)
     
-R_tes_vertex = np.array([])
-for i in range(len(n)):
-    x = ((m_1[i]-n_1[i])/n[i])*(R_sh)-R_p_vertex  
-    R_tes_vertex = np.append(R_tes_vertex, x) 
-#print (R_tes)
+Rtes_1C_estimated = np.array([])
+for i in range(len(n_3_new)):
+    x = ((m_3_new[i]-n_3_new[i])/n_3_new[i])*(R_sh)-Rp_1C_estimated  
+    Rtes_1C_estimated = np.append(Rtes_1C_estimated, x)
     
-R_tes_max = np.array([])
-for i in range(len(n)):
-    x = ((m[i]-n[i])/n[i])*(R_sh)-R_p_max  
-    R_tes_max = np.append(R_tes_max, x)
- 
+Rtes_1D_estimated = np.array([])
+for i in range(len(n_4_new)):
+    x = ((m_4_new[i]-n_4_new[i])/n_4_new[i])*(R_sh)-Rp_1D_estimated  
+    Rtes_1D_estimated = np.append(Rtes_1D_estimated, x)
+    
+Rtes_1E_estimated = np.array([])
+for i in range(len(n_5_new)):
+    x = ((m_5_new[i]-n_5_new[i])/n_5_new[i])*(R_sh)-Rp_1E_estimated  
+    Rtes_1E_estimated = np.append(Rtes_1E_estimated, x)
+    
+Rtes_2A_estimated = np.array([])
+for i in range(len(n_6_new)):
+    x = ((m_6_new[i]-n_6_new[i])/n_6_new[i])*(R_sh)-Rp_2A_estimated  
+    Rtes_2A_estimated = np.append(Rtes_2A_estimated, x)
+    
+Rtes_2B_estimated = np.array([])
+for i in range(len(n_7_new)):
+    x = ((m_7_new[i]-n_7_new[i])/n_7_new[i])*(R_sh)-Rp_2B_estimated  
+    Rtes_2B_estimated = np.append(Rtes_2B_estimated, x)
 
-P_tes_estimated = np.array([])
-for i in range(len(n)):
-    y = (n_1[i]*n_1[i]*R_tes_estimated[i])/1000
-    P_tes_estimated = np.append(P_tes_estimated,y)
+Rtes_2C_estimated = np.array([])
+for i in range(len(n_8_new)):
+    x = ((m_8_new[i]-n_8_new[i])/n_8_new[i])*(R_sh)-Rp_2C_estimated  
+    Rtes_2C_estimated = np.append(Rtes_2C_estimated, x)
     
-P_tes_vertex = np.array([])
-for i in range(len(n)):
-    y = (n_1[i]*n_1[i]*R_tes_vertex[i])/1000
-    P_tes_vertex = np.append(P_tes_vertex,y)
+Rtes_2D_estimated = np.array([])
+for i in range(len(n_9_new)):
+    x = ((m_9_new[i]-n_9_new[i])/n_9_new[i])*(R_sh)-Rp_2D_estimated  
+    Rtes_2D_estimated = np.append(Rtes_2D_estimated, x)
     
-plt.plot(figsize=(10,10))
+Rtes_2E_estimated = np.array([])
+for i in range(len(n_10_new)):
+    x = ((m_10_new[i]-n_10_new[i])/n_10_new[i])*(R_sh)-Rp_2E_estimated  
+    Rtes_2E_estimated = np.append(Rtes_2E_estimated, x)
+    
+Rtes_2F_estimated = np.array([])
+for i in range(len(n_11_new)):
+    x = ((m_11_new[i]-n_11_new[i])/n_11_new[i])*(R_sh)-Rp_2F_estimated  
+    Rtes_2F_estimated = np.append(Rtes_2F_estimated, x)
+
+Ptes_1A_estimated = np.array([])
+for i in range(len(n_1_new)):
+    y = (n_1_new[i]*n_1_new[i]*Rtes_1A_estimated[i])/1000
+    Ptes_1A_estimated = np.append(Ptes_1A_estimated,y)
+
+Ptes_1B_estimated = np.array([])
+for i in range(len(n_2_new)):
+    y = (n_2_new[i]*n_2_new[i]*Rtes_1B_estimated[i])/1000
+    Ptes_1B_estimated = np.append(Ptes_1B_estimated,y)
+    
+Ptes_1C_estimated = np.array([])
+for i in range(len(n_3_new)):
+    y = (n_3_new[i]*n_3_new[i]*Rtes_1C_estimated[i])/1000
+    Ptes_1C_estimated = np.append(Ptes_1C_estimated,y)
+    
+Ptes_1D_estimated = np.array([])
+for i in range(len(n_4_new)):
+    y = (n_4_new[i]*n_4_new[i]*Rtes_1D_estimated[i])/1000
+    Ptes_1D_estimated = np.append(Ptes_1D_estimated,y)
+    
+Ptes_1E_estimated = np.array([])
+for i in range(len(n_5_new)):
+    y = (n_5_new[i]*n_5_new[i]*Rtes_1E_estimated[i])/1000
+    Ptes_1E_estimated = np.append(Ptes_1E_estimated,y)
+    
+Ptes_2A_estimated = np.array([])
+for i in range(len(n_6_new)):
+    y = (n_6_new[i]*n_6_new[i]*Rtes_2A_estimated[i])/1000
+    Ptes_2A_estimated = np.append(Ptes_2A_estimated,y)
+    
+Ptes_2B_estimated = np.array([])
+for i in range(len(n_7_new)):
+    y = (n_7_new[i]*n_7_new[i]*Rtes_2B_estimated[i])/1000
+    Ptes_2B_estimated = np.append(Ptes_2B_estimated,y)
+    
+Ptes_2C_estimated = np.array([])
+for i in range(len(n_8_new)):
+    y = (n_8_new[i]*n_8_new[i]*Rtes_2C_estimated[i])/1000
+    Ptes_2C_estimated = np.append(Ptes_2C_estimated,y)
+    
+Ptes_2D_estimated = np.array([])
+for i in range(len(n_9_new)):
+    y = (n_9_new[i]*n_9_new[i]*Rtes_2D_estimated[i])/1000
+    Ptes_2D_estimated = np.append(Ptes_2D_estimated,y)
+    
+Ptes_2E_estimated = np.array([])
+for i in range(len(n_10_new)):
+    y = (n_10_new[i]*n_10_new[i]*Rtes_2E_estimated[i])/1000
+    Ptes_2E_estimated = np.append(Ptes_2E_estimated,y)
+    
+Ptes_2F_estimated = np.array([])
+for i in range(len(n_11_new)):
+    y = (n_11_new[i]*n_11_new[i]*Rtes_2F_estimated[i])/1000
+    Ptes_2F_estimated = np.append(Ptes_2F_estimated,y)
+    
+from IPython.display import set_matplotlib_formats
+set_matplotlib_formats('svg')
 plt.savefig('Ib-Is after offset.jpg')
+plt.savefig('output.png', dpi=300, bbox_inches='tight')
     
-#plt.figure(m_1, P_tes_estimated, 'o', color='black')
-#plt.title("TES Power - Ib, Side1pA")
-#plt.xlabel('Ib(uA)',fontsize=14)
-#plt.ylabel('P_tes',fontsize=14)
+plt.plot(m_1_new, Ptes_1A_estimated,  color='black', label = 'Side1pA', linewidth = 2.7)
+plt.plot(m_2_new, Ptes_1B_estimated, color='pink', label = 'Side1pB', linewidth = 2.7)
+plt.plot(m_3_new, Ptes_1C_estimated, color='red', label = 'Side1pC', linewidth = 2.7)
+plt.plot(m_4_new, Ptes_1D_estimated, color='blue', label = 'Side1pD', linewidth = 2.7)
+plt.plot(m_5_new, Ptes_1E_estimated, color='yellow', label = 'Side1pE', linewidth = 2.7)
+plt.plot(m_6_new, Ptes_2A_estimated, color='orange', label = 'Side2pA', linewidth = 2.7)
+plt.plot(m_7_new, Ptes_2B_estimated, color='purple', label = 'Side2pB', linewidth = 2.7)
+plt.plot(m_8_new, Ptes_2C_estimated, color='green', label = 'Side2pC', linewidth = 2.7)
+plt.plot(m_9_new, Ptes_2D_estimated, color='magenta', label = 'Side2pD', linewidth = 2.7)
+plt.plot(m_10_new, Ptes_2E_estimated, color='teal', label = 'Side2pE', linewidth = 2.7)
+plt.plot(m_11_new, Ptes_2F_estimated, color='chocolate', label = 'Side2pF', linewidth = 2.7)
+plt.title("TES Power versus Ib")
+plt.xlabel('Ib(uA)',fontsize=14)
+plt.ylabel('P_tes',fontsize=14)
+plt.legend(["Side1pA","Side1pB", "Side1pC", "Side1pD", "Side1pE", "Side2pA", "Side2pB", "Side2pC", "Side2pD", "Side2pE", "Side2pF"], loc=0 )
+plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 
 #plt.figure(m, P_tes_vertex, 'o', color='red')
 #plt.title("TES Power - Ib, Side2pB")
@@ -694,46 +852,4 @@ plt.savefig('Ib-Is after offset.jpg')
 
 
 #Plot TES_Power - Ib  
-
-
-# In[202]:
-
-
-get_ipython().run_line_magic('matplotlib', 'inline')
-from scipy.stats import linregress
-import matplotlib.pyplot as plt
-import numpy as np
-import sympy as sp
-from numpy import diff
-from sympy import diff, sin, exp
-plt.style.use('seaborn-whitegrid')
-import pandas as pd
-x1 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Ib(uA)-2pB.txt")
-m_1 = np.array(x1, dtype=np.float64)
-
-
-y1 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Is(uA)-2pB.txt")
-n_1 = np.array(y1, dtype=np.float64)
-
-
-n_1_new = np.array([])
-m_1_new = np.array([])
-for i in range(len(n_1)-1):
-    j = i+1
-    if n_1[i+1]-n_1[i]>5: 
-        n_1_new = n_1[j:]
-        m_1_new = m_1[j:]
-    if not n_1[i+1]-n_1[i]>5: 
-        n_1_new = np.append(n_1_new, n_1[i])
-        m_1_new = np.append(m_1_new, m_1[i])
-
-
-#plt.plot(m_1_new, n_1_new, 'o', color='black', label = 'Side1pA')
-    
-
-
-# In[ ]:
-
-
-
 
