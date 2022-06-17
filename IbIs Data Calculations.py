@@ -845,23 +845,326 @@ plt.savefig('output.png', dpi=300, bbox_inches='tight')
 #plt.legend(["Side1pA","Side1pB", "Side1pC", "Side1pD", "Side1pE", "Side2pA", "Side2pB", "Side2pC", "Side2pD", "Side2pE", "Side2pF"], loc=0 )
 #plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 
-#TES power versus Ib plot
+#plt.plot(m_1_new, Rtes_1A_estimated,  color='black', label = 'Side1pA', linewidth = 2.7)
+#plt.plot(m_2_new, Rtes_1B_estimated, color='pink', label = 'Side1pB', linewidth = 2.7)
+#plt.plot(m_3_new, Rtes_1C_estimated, color='red', label = 'Side1pC', linewidth = 2.7)
+#plt.plot(m_4_new, Rtes_1D_estimated, color='blue', label = 'Side1pD', linewidth = 2.7)
+#plt.plot(m_5_new, Rtes_1E_estimated, color='yellow', label = 'Side1pE', linewidth = 2.7)
+#plt.plot(m_6_new, Rtes_2A_estimated, color='orange', label = 'Side2pA', linewidth = 2.7)
+#plt.plot(m_7_new, Rtes_2B_estimated, color='purple', label = 'Side2pB', linewidth = 2.7)
+#plt.plot(m_8_new, Rtes_2C_estimated, color='green', label = 'Side2pC', linewidth = 2.7)
+#plt.plot(m_9_new, Rtes_2D_estimated, color='magenta', label = 'Side2pD', linewidth = 2.7)
+#plt.plot(m_10_new, Rtes_2E_estimated, color='teal', label = 'Side2pE', linewidth = 2.7)
+#plt.plot(m_11_new, Rtes_2F_estimated, color='chocolate', label = 'Side2pF', linewidth = 2.7)
+#plt.title("TES Resistance versus Ib")
+#plt.xlabel('Ib(uA)',fontsize=14)
+#plt.ylabel('R_tes',fontsize=14)
+#plt.legend(["Side1pA","Side1pB", "Side1pC", "Side1pD", "Side1pE", "Side2pA", "Side2pB", "Side2pC", "Side2pD", "Side2pE", "Side2pF"], loc=0 )
+#plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 
-plt.plot(m_1_new, Rtes_1A_estimated,  color='black', label = 'Side1pA', linewidth = 2.7)
-plt.plot(m_2_new, Rtes_1B_estimated, color='pink', label = 'Side1pB', linewidth = 2.7)
-plt.plot(m_3_new, Rtes_1C_estimated, color='red', label = 'Side1pC', linewidth = 2.7)
-plt.plot(m_4_new, Rtes_1D_estimated, color='blue', label = 'Side1pD', linewidth = 2.7)
-plt.plot(m_5_new, Rtes_1E_estimated, color='yellow', label = 'Side1pE', linewidth = 2.7)
-plt.plot(m_6_new, Rtes_2A_estimated, color='orange', label = 'Side2pA', linewidth = 2.7)
-plt.plot(m_7_new, Rtes_2B_estimated, color='purple', label = 'Side2pB', linewidth = 2.7)
-plt.plot(m_8_new, Rtes_2C_estimated, color='green', label = 'Side2pC', linewidth = 2.7)
-plt.plot(m_9_new, Rtes_2D_estimated, color='magenta', label = 'Side2pD', linewidth = 2.7)
-plt.plot(m_10_new, Rtes_2E_estimated, color='teal', label = 'Side2pE', linewidth = 2.7)
-plt.plot(m_11_new, Rtes_2F_estimated, color='chocolate', label = 'Side2pF', linewidth = 2.7)
-plt.title("TES Resistance versus Ib")
+dIb_1A = np.array([])
+dIs_1A = np.array([])
+dPdI_1A = np.array([])
+for i in range(1,len(n_1_new)-1):
+    j = i+1
+    x_Ib_1A = m_1_new[j]-m_1_new[i-1]
+    dIb_1A = np.append(dIb_1A, x_Ib_1A)
+    y_Is_1A = n_1_new[j]-n_1_new[i-1]
+    dIs_1A = np.append(dIs_1A, y_Is_1A)
+
+
+m_1_new = m_1_new[:90]
+n_1_new = n_1_new[:90]
+for t in range(len(m_1_new)):
+    R_sh = 8
+    xy_dPdI_1A = (R_sh*m_1_new[t]*(-(n_1_new[t]/m_1_new[t])/(dIs_1A[t]/dIb_1A[t])))/1000
+    dPdI_1A = np.append(dPdI_1A, xy_dPdI_1A)
+    
+m_1_updated = np.array([])
+dPdI_1A_new = np.array([])
+for i in range(len(dPdI_1A)):
+    if dPdI_1A[i]>0 and dPdI_1A[i]<10:
+        dPdI_1A_new = np.append(dPdI_1A_new, dPdI_1A[i])
+        m_1_updated = np.append (m_1_updated, m_1_new[i])
+#dPdI calculations for 1pA
+        
+dIb_1B = np.array([])
+dIs_1B = np.array([])
+dPdI_1B = np.array([])
+for i in range(1,len(n_2_new)-1):
+    j = i+1
+    x_Ib_1B = m_2_new[j]-m_2_new[i-1]
+    dIb_1B = np.append(dIb_1B, x_Ib_1B)
+    y_Is_1B = n_2_new[j]-n_2_new[i-1]
+    dIs_1B = np.append(dIs_1B, y_Is_1B)
+
+
+m_2_new = m_2_new[:90]
+n_2_new = n_2_new[:90]
+for t in range(len(m_2_new)):
+    R_sh = 8
+    xy_dPdI_1B = (R_sh*m_2_new[t]*(-(n_2_new[t]/m_2_new[t])/(dIs_1B[t]/dIb_1B[t])))/1000
+    dPdI_1B = np.append(dPdI_1B, xy_dPdI_1B)
+    
+m_2_updated = np.array([])
+dPdI_1B_new = np.array([])
+for i in range(len(dPdI_1B)):
+    if dPdI_1B[i]>0 and dPdI_1B[i]<10:
+        dPdI_1B_new = np.append(dPdI_1B_new, dPdI_1B[i])
+        m_2_updated = np.append (m_2_updated, m_2_new[i])
+#dPdI calculations for 1pB
+
+dIb_1C = np.array([])
+dIs_1C = np.array([])
+dPdI_1C = np.array([])
+for i in range(1,len(n_3_new)-1):
+    j = i+1
+    x_Ib_1C = m_3_new[j]-m_3_new[i-1]
+    dIb_1C = np.append(dIb_1C, x_Ib_1C)
+    y_Is_1C = n_3_new[j]-n_3_new[i-1]
+    dIs_1C = np.append(dIs_1C, y_Is_1C)
+
+
+m_3_new = m_3_new[:90]
+n_3_new = n_3_new[:90]
+for t in range(len(m_3_new)):
+    R_sh = 8
+    xy_dPdI_1C = (R_sh*m_3_new[t]*(-(n_3_new[t]/m_3_new[t])/(dIs_1C[t]/dIb_1C[t])))/1000
+    dPdI_1C = np.append(dPdI_1C, xy_dPdI_1C)
+    
+m_3_updated = np.array([])
+dPdI_1C_new = np.array([])
+for i in range(len(dPdI_1C)):
+    if dPdI_1C[i]>0 and dPdI_1C[i]<10:
+        dPdI_1C_new = np.append(dPdI_1C_new, dPdI_1C[i])
+        m_3_updated = np.append (m_3_updated, m_3_new[i])
+#dPdI calculations for 1pC
+
+dIb_1D = np.array([])
+dIs_1D = np.array([])
+dPdI_1D = np.array([])
+for i in range(1,len(n_4_new)-1):
+    j = i+1
+    x_Ib_1D = m_4_new[j]-m_4_new[i-1]
+    dIb_1D = np.append(dIb_1D, x_Ib_1D)
+    y_Is_1D = n_4_new[j]-n_4_new[i-1]
+    dIs_1D = np.append(dIs_1D, y_Is_1D)
+
+
+m_4_new = m_4_new[:90]
+n_4_new = n_4_new[:90]
+for t in range(len(m_4_new)):
+    R_sh = 8
+    xy_dPdI_1D = (R_sh*m_4_new[t]*(-(n_4_new[t]/m_4_new[t])/(dIs_1D[t]/dIb_1D[t])))/1000
+    dPdI_1D = np.append(dPdI_1D, xy_dPdI_1D)
+    
+m_4_updated = np.array([])
+dPdI_1D_new = np.array([])
+for i in range(len(dPdI_1D)):
+    if dPdI_1D[i]>0 and dPdI_1D[i]<10:
+        dPdI_1D_new = np.append(dPdI_1D_new, dPdI_1D[i])
+        m_4_updated = np.append (m_4_updated, m_4_new[i])
+#dPdI calculations for 1pD
+
+
+dIb_1E = np.array([])
+dIs_1E = np.array([])
+dPdI_1E = np.array([])
+for i in range(1,len(n_5_new)-1):
+    j = i+1
+    x_Ib_1E = m_5_new[j]-m_5_new[i-1]
+    dIb_1E = np.append(dIb_1E, x_Ib_1E)
+    y_Is_1E = n_5_new[j]-n_5_new[i-1]
+    dIs_1E = np.append(dIs_1E, y_Is_1E)
+
+
+m_5_new = m_5_new[:90]
+n_5_new = n_5_new[:90]
+for t in range(len(m_5_new)):
+    R_sh = 8
+    xy_dPdI_1E = (R_sh*m_5_new[t]*(-(n_5_new[t]/m_5_new[t])/(dIs_1E[t]/dIb_1E[t])))/1000
+    dPdI_1E = np.append(dPdI_1E, xy_dPdI_1E)
+    
+m_5_updated = np.array([])
+dPdI_1E_new = np.array([])
+for i in range(len(dPdI_1E)):
+    if dPdI_1E[i]>0 and dPdI_1E[i]<10:
+        dPdI_1E_new = np.append(dPdI_1E_new, dPdI_1E[i])
+        m_5_updated = np.append (m_5_updated, m_5_new[i])
+#dPdI calculations for 1pE
+
+dIb_2A = np.array([])
+dIs_2A = np.array([])
+dPdI_2A = np.array([])
+for i in range(1,len(n_6_new)-1):
+    j = i+1
+    x_Ib_2A = m_6_new[j]-m_6_new[i-1]
+    dIb_2A = np.append(dIb_2A, x_Ib_2A)
+    y_Is_2A = n_6_new[j]-n_6_new[i-1]
+    dIs_2A = np.append(dIs_2A, y_Is_2A)
+
+
+m_6_new = m_6_new[:90]
+n_6_new = n_6_new[:90]
+for t in range(len(m_6_new)):
+    R_sh = 8
+    xy_dPdI_2A = (R_sh*m_6_new[t]*(-(n_6_new[t]/m_6_new[t])/(dIs_2A[t]/dIb_2A[t])))/1000
+    dPdI_2A = np.append(dPdI_2A, xy_dPdI_2A)
+    
+m_6_updated = np.array([])
+dPdI_2A_new = np.array([])
+for i in range(len(dPdI_2A)):
+    if dPdI_2A[i]>0 and dPdI_2A[i]<10:
+        dPdI_2A_new = np.append(dPdI_2A_new, dPdI_2A[i])
+        m_6_updated = np.append (m_6_updated, m_6_new[i])
+#dPdI calculations for 2pA
+
+dIb_2B = np.array([])
+dIs_2B = np.array([])
+dPdI_2B = np.array([])
+for i in range(1,len(n_7_new)-1):
+    j = i+1
+    x_Ib_2B = m_7_new[j]-m_7_new[i-1]
+    dIb_2B = np.append(dIb_2B, x_Ib_2B)
+    y_Is_2B = n_7_new[j]-n_7_new[i-1]
+    dIs_2B = np.append(dIs_2B, y_Is_2B)
+
+
+m_7_new = m_7_new[:90]
+n_7_new = n_7_new[:90]
+for t in range(len(m_7_new)):
+    R_sh = 8
+    xy_dPdI_2B = (R_sh*m_7_new[t]*(-(n_7_new[t]/m_7_new[t])/(dIs_2B[t]/dIb_2B[t])))/1000
+    dPdI_2B = np.append(dPdI_2B, xy_dPdI_2B)
+    
+m_7_updated = np.array([])
+dPdI_2B_new = np.array([])
+for i in range(len(dPdI_2B)):
+    if dPdI_2B[i]>0 and dPdI_2B[i]<10:
+        dPdI_2B_new = np.append(dPdI_2B_new, dPdI_2B[i])
+        m_7_updated = np.append (m_7_updated, m_7_new[i])
+#dPdI calculations for 2pB
+
+dIb_2C = np.array([])
+dIs_2C = np.array([])
+dPdI_2C = np.array([])
+for i in range(1,len(n_8_new)-1):
+    j = i+1
+    x_Ib_2C = m_8_new[j]-m_8_new[i-1]
+    dIb_2C = np.append(dIb_2C, x_Ib_2C)
+    y_Is_2C = n_8_new[j]-n_8_new[i-1]
+    dIs_2C = np.append(dIs_2C, y_Is_2C)
+
+
+m_8_new = m_8_new[:90]
+n_8_new = n_8_new[:90]
+for t in range(len(m_8_new)):
+    R_sh = 8
+    xy_dPdI_2C = (R_sh*m_8_new[t]*(-(n_8_new[t]/m_8_new[t])/(dIs_2C[t]/dIb_2C[t])))/1000
+    dPdI_2C = np.append(dPdI_2C, xy_dPdI_2C)
+    
+m_8_updated = np.array([])
+dPdI_2C_new = np.array([])
+for i in range(len(dPdI_2C)):
+    if dPdI_2C[i]>0 and dPdI_2C[i]<10:
+        dPdI_2C_new = np.append(dPdI_2C_new, dPdI_2C[i])
+        m_8_updated = np.append (m_8_updated, m_8_new[i])
+#dPdI calculations for 2pC
+
+dIb_2D = np.array([])
+dIs_2D = np.array([])
+dPdI_2D = np.array([])
+for i in range(1,len(n_9_new)-1):
+    j = i+1
+    x_Ib_2D = m_9_new[j]-m_9_new[i-1]
+    dIb_2D = np.append(dIb_2D, x_Ib_2D)
+    y_Is_2D = n_9_new[j]-n_9_new[i-1]
+    dIs_2D = np.append(dIs_2D, y_Is_2D)
+
+
+m_9_new = m_9_new[:90]
+n_9_new = n_9_new[:90]
+for t in range(len(m_9_new)):
+    R_sh = 8
+    xy_dPdI_2D = (R_sh*m_9_new[t]*(-(n_9_new[t]/m_9_new[t])/(dIs_2D[t]/dIb_2D[t])))/1000
+    dPdI_2D = np.append(dPdI_2D, xy_dPdI_2D)
+    
+m_9_updated = np.array([])
+dPdI_2D_new = np.array([])
+for i in range(len(dPdI_2D)):
+    if dPdI_2D[i]>0 and dPdI_2D[i]<10:
+        dPdI_2D_new = np.append(dPdI_2D_new, dPdI_2D[i])
+        m_9_updated = np.append (m_9_updated, m_9_new[i])
+#dPdI calculations for 2pD
+
+dIb_2E = np.array([])
+dIs_2E = np.array([])
+dPdI_2E = np.array([])
+for i in range(1,len(n_10_new)-1):
+    j = i+1
+    x_Ib_2E = m_10_new[j]-m_10_new[i-1]
+    dIb_2E = np.append(dIb_2E, x_Ib_2E)
+    y_Is_2E = n_10_new[j]-n_10_new[i-1]
+    dIs_2E = np.append(dIs_2E, y_Is_2E)
+
+
+m_10_new = m_10_new[:90]
+n_10_new = n_10_new[:90]
+for t in range(len(m_10_new)):
+    R_sh = 8
+    xy_dPdI_2E = (R_sh*m_10_new[t]*(-(n_10_new[t]/m_10_new[t])/(dIs_2E[t]/dIb_2E[t])))/1000
+    dPdI_2E = np.append(dPdI_2E, xy_dPdI_2E)
+    
+m_10_updated = np.array([])
+dPdI_2E_new = np.array([])
+for i in range(len(dPdI_2E)):
+    if dPdI_2E[i]>0 and dPdI_2E[i]<10:
+        dPdI_2E_new = np.append(dPdI_2E_new, dPdI_2E[i])
+        m_10_updated = np.append (m_10_updated, m_10_new[i])
+#dPdI calculations for 2pE
+
+dIb_2F = np.array([])
+dIs_2F = np.array([])
+dPdI_2F = np.array([])
+for i in range(1,len(n_11_new)-1):
+    j = i+1
+    x_Ib_2F = m_11_new[j]-m_11_new[i-1]
+    dIb_2F = np.append(dIb_2F, x_Ib_2F)
+    y_Is_2F = n_11_new[j]-n_11_new[i-1]
+    dIs_2F = np.append(dIs_2F, y_Is_2F)
+
+
+m_11_new = m_11_new[:90]
+n_11_new = n_11_new[:90]
+for t in range(len(m_11_new)):
+    R_sh = 8
+    xy_dPdI_2F = (R_sh*m_11_new[t]*(-(n_11_new[t]/m_11_new[t])/(dIs_2F[t]/dIb_2F[t])))/1000
+    dPdI_2F = np.append(dPdI_2F, xy_dPdI_2F)
+    
+m_11_updated = np.array([])
+dPdI_2F_new = np.array([])
+for i in range(len(dPdI_2F)):
+    if dPdI_2F[i]>0 and dPdI_2F[i]<10:
+        dPdI_2F_new = np.append(dPdI_2F_new, dPdI_2F[i])
+        m_11_updated = np.append (m_11_updated, m_11_new[i])
+#dPdI calculations for 2pF
+
+
+plt.plot(m_1_updated, dPdI_1A_new, color='black', label = 'Side1pA', linewidth = 2.7)
+plt.plot(m_2_updated, dPdI_1B_new, color='pink', label = 'Side1pB', linewidth = 2.7)
+plt.plot(m_3_updated, dPdI_1C_new,  color='red', label = 'Side1pC', linewidth = 2.7)
+plt.plot(m_4_updated, dPdI_1D_new,  color='blue', label = 'Side1pD', linewidth = 2.7)
+plt.plot(m_5_updated, dPdI_1E_new,  color='yellow', label = 'Side1pE', linewidth = 2.7)
+plt.plot(m_6_updated, dPdI_2A_new,  color='orange', label = 'Side2pA', linewidth = 2.7)
+plt.plot(m_7_updated, dPdI_2B_new,  color='purple', label = 'Side2pB', linewidth = 2.7)
+plt.plot(m_8_updated, dPdI_2C_new,  color='green', label = 'Side2pC', linewidth = 2.7)
+plt.plot(m_9_updated, dPdI_2D_new,  color='magenta', label = 'Side2pD', linewidth = 2.7)
+plt.plot(m_10_updated, dPdI_2E_new,  color='teal', label = 'Side2pE', linewidth = 2.7)
+plt.plot(m_11_updated, dPdI_2F_new,  color='chocolate', label = 'Side2pF', linewidth = 2.7)
+plt.title("dPdI versus Ib")
 plt.xlabel('Ib(uA)',fontsize=14)
-plt.ylabel('R_tes',fontsize=14)
-plt.legend(["Side1pA","Side1pB", "Side1pC", "Side1pD", "Side1pE", "Side2pA", "Side2pB", "Side2pC", "Side2pD", "Side2pE", "Side2pF"], loc=0 )
+plt.ylabel('dPdI(uV)',fontsize=14)
+plt.legend(["Side1pA", "Side1pB", "Side1pC", "Side1pD", "Side1pE", "Side2pA", "Side1pB", "Side2pC", "Side2pD", "Side2pE", "Side2pF"], loc=0 )
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
 
-#TES resistance versus Ib plot
+  
