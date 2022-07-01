@@ -18,6 +18,7 @@ x8 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Ib(uA)-2pC.txt")
 x9 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Ib(uA)-2pD.txt")
 x10 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Ib(uA)-2pE.txt")
 x11 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Ib(uA)-2pF.txt")
+x12 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Ib(uA)-1pF.txt")
 m_1 = np.array(x1, dtype=np.float64) #array that includes all Ib values for channel 1pA
 m_2 = np.array(x2, dtype=np.float64)
 m_3 = np.array(x3, dtype=np.float64)
@@ -29,7 +30,7 @@ m_8 = np.array(x8, dtype=np.float64)
 m_9 = np.array(x9, dtype=np.float64)
 m_10 = np.array(x10, dtype=np.float64)
 m_11 = np.array(x11, dtype=np.float64)
-
+m_12 = np.array(x12, dtype=np.float64)
 
 m1A=len(m_1) - 50
 m2A=len(m_1) - 40
@@ -65,6 +66,13 @@ m3E=len(m_5) - 30
 m4E=len(m_5) - 20
 m5E=len(m_5) - 10
 m6E=len(m_5) - 1
+
+m1F=len(m_12) - 50
+m2F=len(m_12) - 40
+m3F=len(m_12) - 30
+m4F=len(m_12) - 20
+m5F=len(m_12) - 10
+m6F=len(m_12) - 1
 
 m1A_2=len(m_6) - 50
 m2A_2=len(m_6) - 40
@@ -120,6 +128,7 @@ y8 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Is(uA)-2pC.txt")
 y9 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Is(uA)-2pD.txt")
 y10 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Is(uA)-2pE.txt")
 y11 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Is(uA)-2pF.txt")
+y12 = pd.read_csv("/Users/giulia/Documents/IbIs Data/Is(uA)-1pF.txt")
 
 n_1 = np.array(y1, dtype=np.float64)#array that includes all Is values for channel 1pA
 n_2 = np.array(y2, dtype=np.float64)
@@ -132,6 +141,7 @@ n_8 = np.array(y8, dtype=np.float64)
 n_9 = np.array(y9, dtype=np.float64)
 n_10 = np.array(y10, dtype=np.float64)
 n_11 = np.array(y11, dtype=np.float64)
+n_12 = np.array(y12, dtype=np.float64)
 
 
 
@@ -270,21 +280,18 @@ for i in range(len(n_11)-1):
             n_11_new = n_11_new[j:]
             m_11_new = m_11_new[j:]
  
-        
-        
-#d_Ib = np.array([])
-#d_Is = np.array([])
-#dPdI = np.array([])
-#for i in range(len(n)):
-#    x_Ib = ((m[i+1]-m[i])+(m[i]-m[i-1]))/2
-#    d_Ib = np.append(d_Ib, x_Ib)
-#    y_Is = ((n[i+1]-n[i])+(n[i]-n[i-1]))/2
-#    d_Is = np.append(d_Is, y_Is)
-#    for j in range(len(n)):
-#        xy_dPdI = R_sh*m[j]*(-(n[j]/m[j])/(d_Is[j]/d_Ib[j]))
-#        dPdI = np.append(dPdI, xy_dPdI)
-    
 
+n_12_new = np.array([]) 
+m_12_new = np.array([])
+for i in range(len(n_12)-1):
+    n_12_new = np.append(n_12_new, n_12[i])
+    m_12_new = np.append(m_12_new, m_12[i])
+    for i in range(len(n_11_new)-1):
+        j = i+1
+        if n_12_new[i+1]-n_12_new[i]>5: 
+            n_12_new = n_12_new[j:]
+            m_12_new = m_12_new[j:]    
+            
 n1A = len(n_1) - 50
 n2A = len(n_1) - 40
 n3A = len(n_1) - 30
@@ -319,6 +326,13 @@ n3E = len(n_5) - 30
 n4E = len(n_5) - 20
 n5E = len(n_5) - 10
 n6E = len(n_5) - 1
+
+n1F = len(n_12) - 50
+n2F = len(n_12) - 40
+n3F = len(n_12) - 30
+n4F = len(n_12) - 20
+n5F = len(n_12) - 10
+n6F = len(n_12) - 1
 
 n1A_2 = len(n_6) - 50
 n2A_2 = len(n_6) - 40
@@ -411,6 +425,15 @@ slope_initial = np.array([])
 list = np.array([slope1E, slope2E, slope3E, slope4E, slope5E])
 slope_finalE = np.append(slope_initial, list)
 
+slope1F = (n_12[n2F]-n_12[n1F])/(m_12[m2F]-m_12[m1F])
+slope2F = (n_12[n3F]-n_12[n2F])/(m_12[m3F]-m_12[m2F])
+slope3F = (n_12[n4F]-n_12[n3F])/(m_12[m4F]-m_12[m3F])
+slope4F = (n_12[n5F]-n_12[n4F])/(m_12[m5F]-m_12[m4F])
+slope5F = (n_12[n6F]-n_12[n5F])/(m_12[m6F]-m_12[m5F])
+slope_initial = np.array([])
+list = np.array([slope1E, slope2F, slope3F, slope4F, slope5F])
+slope_finalF = np.append(slope_initial, list)
+
 slope1A_2 = (n_6[n2A_2]-n_6[n1A_2])/(m_6[m2A_2]-m_6[m1A_2])
 slope2A_2 = (n_6[n3A_2]-n_6[n2A_2])/(m_6[m3A_2]-m_6[m2A_2])
 slope3A_2 = (n_6[n4A_2]-n_6[n3A_2])/(m_6[m4A_2]-m_6[m3A_2])
@@ -491,6 +514,11 @@ for i in range(len(slope_finalE)):
     sumE = sumE + slope_finalE[i]
 slopeE = sumE/len(slope_finalE)
 
+sumF = 0
+for i in range(len(slope_finalF)):
+    sumF = sumF + slope_finalF[i]
+slopeF = sumF/len(slope_finalF)
+
 sumA_2 = 0
 for i in range(len(slope_finalA_2)):
     sumA_2 = sumA_2 + slope_finalA_2[i]
@@ -541,6 +569,10 @@ for i in range(len(m_5_new)):
     for j in range(len(n_5_new)):
         intercpE = n_5_new[j]-slopeE*m_5_new[i]
         
+for i in range(len(m_12_new)):
+    for j in range(len(n_12_new)):
+        intercpF = n_12_new[j]-slopeE*m_12_new[i]
+        
 for i in range(len(m_6_new)):
     for j in range(len(n_6_new)):
         intercpA_2 = n_6_new[j]-slopeA_2*m_6_new[i]
@@ -585,6 +617,9 @@ for i in range(len(n_4_new)):
 
 for i in range(len(n_5_new)):
     n_5_new[i] = intercpE - n_5_new[i]
+    
+for i in range(len(n_12_new)):
+    n_12_new[i] = intercpF - n_12_new[i]
 
 for i in range(len(n_6_new)):
     n_6_new[i] = intercpA_2 - n_6_new[i]
@@ -650,6 +685,11 @@ n_1E_max = (n_5_new[0]/n_5_new[1])*1.020*n_5_new[0]
 R_sh = 8 
 Rp_1E_max = (m_5_new[0]/(2*n_5_new[0])-1)*R_sh
 
+m_1F_max = m_12_new[0]-2
+n_1F_max = (n_12_new[0]/n_12_new[1])*1.020*n_12_new[0]
+R_sh = 8 
+Rp_1F_max = (m_12_new[0]/(2*n_12_new[0])-1)*R_sh
+
 m_2A_max = m_6_new[0]-2
 n_2A_max = (n_6_new[0]/n_6_new[1])*1.020*n_6_new[0]
 R_sh = 8 
@@ -695,6 +735,9 @@ Rp_1D_estimated = (Rp_1D_min_estimated + Rp_1D_max)/2
 Rp_1E_min_estimated = (m_1E_max/(2*n_1E_max)-1)*R_sh
 Rp_1E_estimated = (Rp_1E_min_estimated + Rp_1E_max)/2
 
+Rp_1F_min_estimated = (m_1F_max/(2*n_1F_max)-1)*R_sh
+Rp_1F_estimated = (Rp_1F_min_estimated + Rp_1F_max)/2
+
 Rp_2A_min_estimated = (m_2A_max/(2*n_2A_max)-1)*R_sh
 Rp_2A_estimated = (Rp_2A_min_estimated + Rp_2A_max)/2
 
@@ -737,6 +780,11 @@ Rtes_1E_estimated = np.array([])
 for i in range(len(n_5_new)):
     x = ((m_5_new[i]-n_5_new[i])/n_5_new[i])*(R_sh)-Rp_1E_estimated  
     Rtes_1E_estimated = np.append(Rtes_1E_estimated, x)
+    
+Rtes_1F_estimated = np.array([])
+for i in range(len(n_12_new)):
+    x = ((m_12_new[i]-n_12_new[i])/n_12_new[i])*(R_sh)-Rp_1F_estimated  
+    Rtes_1F_estimated = np.append(Rtes_1F_estimated, x)
     
 Rtes_2A_estimated = np.array([])
 for i in range(len(n_6_new)):
@@ -792,6 +840,11 @@ Ptes_1E_estimated = np.array([])
 for i in range(len(n_5_new)):
     y = (n_5_new[i]*n_5_new[i]*Rtes_1E_estimated[i])/1000
     Ptes_1E_estimated = np.append(Ptes_1E_estimated,y)
+    
+Ptes_1F_estimated = np.array([])
+for i in range(len(n_12_new)):
+    y = (n_12_new[i]*n_12_new[i]*Rtes_1F_estimated[i])/1000
+    Ptes_1F_estimated = np.append(Ptes_1F_estimated,y)
     
 Ptes_2A_estimated = np.array([])
 for i in range(len(n_6_new)):
@@ -993,6 +1046,32 @@ for i in range(len(dPdI_1E)):
         m_5_updated = np.append (m_5_updated, m_5_new[i])
 #dPdI calculations for 1pE
 
+dIb_1F = np.array([])
+dIs_1F = np.array([])
+dPdI_1F = np.array([])
+for i in range(1,len(n_12_new)-1):
+    j = i+1
+    x_Ib_1F = m_12_new[j]-m_12_new[i-1]
+    dIb_1F = np.append(dIb_1F, x_Ib_1F)
+    y_Is_1F = n_12_new[j]-n_12_new[i-1]
+    dIs_1F = np.append(dIs_1F, y_Is_1F)
+
+
+m_12_new = m_12_new[:90]
+n_12_new = n_12_new[:90]
+for t in range(len(m_12_new)):
+    R_sh = 8
+    xy_dPdI_1F = (R_sh*m_12_new[t]*(-(n_12_new[t]/m_12_new[t])/(dIs_1F[t]/dIb_1F[t])))/1000
+    dPdI_1F = np.append(dPdI_1F, xy_dPdI_1F)
+    
+m_12_updated = np.array([])
+dPdI_1F_new = np.array([])
+for i in range(len(dPdI_1F)):
+    if dPdI_1F[i]>0 and dPdI_1E[i]<10:
+        dPdI_1F_new = np.append(dPdI_1F_new, dPdI_1F[i])
+        m_12_updated = np.append (m_12_updated, m_12_new[i])
+#dPdI calculations for 1pF
+
 dIb_2A = np.array([])
 dIs_2A = np.array([])
 dPdI_2A = np.array([])
@@ -1166,5 +1245,3 @@ plt.xlabel('Ib(uA)',fontsize=14)
 plt.ylabel('dPdI(uV)',fontsize=14)
 plt.legend(["Side1pA", "Side1pB", "Side1pC", "Side1pD", "Side1pE", "Side2pA", "Side1pB", "Side2pC", "Side2pD", "Side2pE", "Side2pF"], loc=0 )
 plt.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
-
-  
